@@ -1,35 +1,35 @@
 <menu
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item
-        android:id="@+id/menu_set_template_image"
-        android:icon="@drawable/ic_action_picture"
-        android:onClick="setTemplateImage"
-        app:showAsAction="ifRoom"
-        android:title="@string/menu_set_template_image"/>
+	<item
+		android:id="@+id/menu_set_template_image"
+		android:icon="@drawable/photo"
+		android:onClick="setTemplateImage"
+		android:title="@string/menu_set_template_image"
+		app:showAsAction="ifRoom" />
 
-    <item
-        android:id="@+id/menu_fullscreen"
-        android:icon="@drawable/ic_arrow_expand_white_48dp"
-        android:onClick="switchFullScreen"
-        app:showAsAction="ifRoom"
-        android:title="@string/fullscreen"/>
+	<item
+		android:id="@+id/menu_fullscreen"
+		android:icon="@drawable/arrow_expand"
+		android:onClick="switchFullScreen"
+		android:title="@string/fullscreen"
+		app:showAsAction="ifRoom" />
 
-    <item
-        android:icon="@drawable/ic_settings_white_48dp"
-        android:onClick="showSettings"
-        app:showAsAction="never"
-        android:title="@string/menu_settings"/>
+	<item
+		android:icon="@drawable/settings"
+		android:onClick="showSettings"
+		android:title="@string/menu_settings"
+		app:showAsAction="never" />
 
-    <item
-        android:onClick="showAbout"
-        app:showAsAction="never"
-        android:title="@string/menu_about"/>
+	<item
+		android:onClick="showAbout"
+		android:title="@string/menu_about"
+		app:showAsAction="never" />
 
-    <item
-        android:onClick="showDonate"
-        app:showAsAction="never"
-        android:title="@string/menu_donate"/>
+	<item
+		android:onClick="showDonate"
+		android:title="@string/menu_donate"
+		app:showAsAction="never" />
 
 </menu>

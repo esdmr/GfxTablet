@@ -14,17 +14,19 @@ import at.bitfire.gfxtablet.NetEvent.Type;
 
 public class NetworkClient implements Runnable {
 	static final int GFXTABLET_PORT = 40118;
-	
+
 	final LinkedBlockingQueue<NetEvent> motionQueue = new LinkedBlockingQueue<>();
-	LinkedBlockingQueue<NetEvent> getQueue() { return motionQueue; }
-	
-	InetAddress destAddress;
 	final SharedPreferences preferences;
+	InetAddress destAddress;
 
 	NetworkClient(SharedPreferences preferences) {
 		this.preferences = preferences;
 	}
-	
+
+	LinkedBlockingQueue<NetEvent> getQueue() {
+		return motionQueue;
+	}
+
 	boolean reconfigureNetworking() {
 		try {
 			String hostName = preferences.getString(SettingsActivity.KEY_PREF_HOST, "unknown.invalid");
@@ -35,22 +37,20 @@ public class NetworkClient implements Runnable {
 		}
 		return true;
 	}
-	
+
 	@Override
 	public void run() {
-		try {
-			DatagramSocket socket = new DatagramSocket();
-			
+		try (DatagramSocket socket = new DatagramSocket()) {
 			while (true) {
 				NetEvent event = motionQueue.take();
-				
+
 				// graceful shutdown
 				if (event.type == Type.TYPE_DISCONNECT)
 					break;
-				
-				if (destAddress == null)		// no valid destination host
+
+				if (destAddress == null)        // no valid destination host
 					continue;
-			
+
 				byte[] data = event.toByteArray();
 				DatagramPacket pkt = new DatagramPacket(data, data.length, destAddress, GFXTABLET_PORT);
 				socket.send(pkt);

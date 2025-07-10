@@ -14,7 +14,7 @@ so manually move them:
 Moved Files:
 ------------
 Android Gradle projects use a different directory structure than ADT
-Eclipse projects. Here's how the projects were restructured:
+Eclipse projects. Here’s how the projects were restructured:
 
 * AndroidManifest.xml => app/src/main/AndroidManifest.xml
 * res/ => app/src/main/res/
